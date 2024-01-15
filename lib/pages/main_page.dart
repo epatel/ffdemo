@@ -1,34 +1,24 @@
 import 'package:ffdemo/imports.dart';
 
-class MainPage extends StatefulWidget {
+class MainPage extends StatelessWidget {
   const MainPage({super.key, required this.title});
 
   final String title;
-
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: widget.title.wText,
+        title: title.wText,
       ),
-      body: [
-        'You have pushed the button this many times:'.wLabelLarge(context),
-        const CounterWidget(),
-      ].columnSpreadEvenly.center,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.handle(const ButtonEvent(id: 'main.plus')),
-        child: Icons.add.icon,
+      body: Column(
+        children: [
+          ChangeNotifierProvider(
+            create: (_) => StyleProvider(),
+            child: const DemoPage(),
+          ),
+        ],
       ),
     );
   }

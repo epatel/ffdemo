@@ -1,4 +1,3 @@
-import 'package:provider/provider.dart';
 import 'package:ffdemo/imports.dart';
 
 class Coordinator extends ChangeNotifier {
@@ -26,8 +25,7 @@ class Coordinator extends ChangeNotifier {
     return event;
   }
 
-  void handleEvent(BuildContext context, CoordinatorEvent event) =>
-      stateHandler(context, eventFilter(event));
+  void handleEvent(BuildContext context, CoordinatorEvent event) => stateHandler(context, eventFilter(event));
 
   void startState(BuildContext context, CoordinatorEvent event) {
     if (event is ButtonEvent) {
